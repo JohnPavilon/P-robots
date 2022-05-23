@@ -1,0 +1,91 @@
+(**************************************************************************)
+(*                             W A R N I N G                              *)
+(*                                                                        *)
+(*  This Robot has NOT been designed to take advantage of the advanced    *)
+(*  features of P-ROBOTS, such as, Shields, Fuel, Teams or Obstructions.  *)
+(**************************************************************************)
+
+  PROCEDURE Trouble3;
+
+  VAR Dir : Integer;
+    Ang : Integer;
+    Dist : Integer;
+    Width : Integer;
+    Incr : Integer;
+
+  BEGIN                           { Main routine }
+
+    Dir := 0;
+    Width := 10;
+    Incr := 20;
+    Ang := Angle_To(1000, 1000);
+
+    REPEAT                        { Main loop }
+
+      WHILE (loc_y < 850) DO
+        BEGIN
+          DRIVE(Ang, 100);
+          Dist := SCAN(Dir, Width);
+          IF Dist > 45 THEN
+            BEGIN
+              CANNON(Dir, Dist);
+              CANNON(Dir, Dist);
+            END
+          ELSE
+            Dir := Dir+Incr;
+        END;
+      DRIVE(Ang, 0);
+      Ang := Angle_To(500, 0);
+      WHILE (speed > 40) DO Ang := Angle_To(500, 0);
+
+      WHILE (loc_y > 150) DO
+        BEGIN
+          DRIVE(Ang, 100);
+          Dist := SCAN(Dir, Width);
+          IF Dist > 45 THEN
+            BEGIN
+              CANNON(Dir, Dist);
+              CANNON(Dir, Dist);
+            END
+          ELSE
+            Dir := Dir+Incr;
+        END;
+      DRIVE(Ang, 0);
+      Ang := Angle_To(0, 1000);
+      WHILE (speed > 40) DO Ang := Angle_To(0, 1000);
+
+      WHILE (loc_y < 850) DO
+        BEGIN
+          DRIVE(Ang, 100);
+          Dist := SCAN(Dir, Width);
+          IF Dist > 45 THEN
+            BEGIN
+              CANNON(Dir, Dist);
+              CANNON(Dir, Dist);
+            END
+          ELSE
+            Dir := Dir+Incr;
+        END;
+      DRIVE(Ang, 0);
+      Ang := Angle_To(500, 0);
+      WHILE (speed > 40) DO Ang := Angle_To(500, 0);
+
+      WHILE (loc_y > 150) DO
+        BEGIN
+          DRIVE(Ang, 100);
+          Dist := SCAN(Dir, Width);
+          IF Dist > 45 THEN
+            BEGIN
+              CANNON(Dir, Dist);
+              CANNON(Dir, Dist);
+            END
+          ELSE
+            Dir := Dir+Incr;
+        END;
+      DRIVE(Ang, 0);
+      Ang := Angle_To(1000, 1000);
+      WHILE (speed > 40) DO Ang := Angle_To(1000, 1000);
+
+    UNTIL DEAD OR WINNER;
+
+  END;                            { End Trouble3 Main }
